@@ -37,13 +37,20 @@ export class RomanConverter {
          * @type {RegExp[]}
          */
         const tests = [
+            // Invalid chars
             /[^IVXLCDM]/,
+
+            // Exceeded
             /I{4,}/,
             /V{2,}/,
             /X{4,}/,
             /L{2,}/,
             /C{4,}/,
             /D{2,}/,
+
+            // Invalid sucessors
+            /I[^IVX]/,
+            /V[^I]/,
         ]
 
         tests.forEach(function (regex) {

@@ -8,6 +8,7 @@ describe('First', () => {
         ['VI', 6],
         ['IV', 4],
         ['IX', 9],
+        ['XIX', 19],
         ['LX', 60],
         ['XL', 40],
         ['CC', 200],
@@ -26,13 +27,15 @@ describe('First', () => {
         ['LL'],
         ['CCCC'],
         ['DD'],
+        ['VX'],
+        ['IC'],
     ]
 
     it.each(valid_cases)('valid %s = %d', (input, expected) => {
         expect(converter.get(input)).toBe(expected)
     })
 
-    it.each(invalid_cases)('throw error on %s', input => {
+    it.each(invalid_cases)('invalid %s', input => {
         expect(() => converter.get(input)).toThrow(SyntaxError)
     })
 });
