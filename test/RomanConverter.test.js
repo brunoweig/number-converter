@@ -1,12 +1,16 @@
-import { RomanConverter } from "../src/RomanConverter";
+import { RomanConverter } from "../src/domain/RomanConverter"
 
 describe('First', () => {
     const converter = new RomanConverter()
 
-    it('units', () => {
-        expect(converter.get('I')).toBe(1)
-        expect(converter.get('VI')).toBe(6)
-        expect(converter.get('IV')).toBe(4)
-        expect(converter.get('IX')).toBe(9)
+    const values = [
+        ['I', 1],
+        ['VI', 6],
+        ['IV', 4],
+        ['IX', 9],
+    ]
+
+    it.each(values)('units %s = %d', (input, expected) => {
+        expect(converter.get(input)).toBe(expected)
     })
 });
