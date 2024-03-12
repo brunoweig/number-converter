@@ -54,14 +54,11 @@ export class RomanConverter {
     }
 
     _calculate(value, next) {
-        let result = ROMAN[value]
+        const currentValue = ROMAN[value]
+        const nextValue = ROMAN[next] ?? 0
 
-        if (value === next) return result
+        if (nextValue >= currentValue) return currentValue
 
-        if (next === 'I') result -= ROMAN.I * 2
-        if (next === 'X' && value !== 'V') result -= ROMAN.X * 2
-        if (next === 'C') result -= ROMAN.C * 2
-
-        return result
+        return currentValue - nextValue * 2
     }
 }
