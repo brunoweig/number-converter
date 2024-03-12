@@ -1,0 +1,15 @@
+{
+  "name": "roman-to-decimal",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Bruno Weigmann de Matos <bruno.weig@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
