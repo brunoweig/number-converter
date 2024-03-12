@@ -1,5 +1,5 @@
 {
-  "name": "roman-to-decimal",
+  "name": "@brunowm/conversor",
   "version": "0.1.0",
   "type": "module",
   "description": "",
@@ -8,7 +8,7 @@
     "test": "NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
     "test:watch": "npm test -- --watchAll",
     "build": "webpack",
-    "watch": "webpack watch"
+    "dev": "webpack watch"
   },
   "keywords": [],
   "author": "Bruno Weigmann de Matos <bruno.weig@gmail.com>",
