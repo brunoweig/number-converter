@@ -1,66 +1,40 @@
+const ROMAN = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+}
+
 export class RomanConverter {
     /**
      * @param {String} value 
      */
     get(value) {
         let result = 0
-        const reverted = this._revert(value)
+        const formattedValue = value.toUpperCase()
 
-        for (let i=0; i < reverted.length; i++) {
-            const current = reverted[i]
-            const next = reverted[i+1] ?? ''
+        for (let i=formattedValue.length-1; i >= 0; i--) {
+            const current = formattedValue[i]
+            const next = formattedValue[i-1] ?? ''
 
-            if (current === 'I') result += this._unit(next)
-            if (current === 'V') result += this._five(next)
-            if (current === 'X') result += this._tens(next)
+            result += this._calculate(current, next)
         }
 
         return result
     }
 
-    /**
-     * @param {String} next
-     * @returns {number} 
-     */
-    _unit(next) {
-        return 1
-    }
+    _calculate(value, next) {
+        let result = ROMAN[value]
 
-    /**
-     * @param {String} next
-     * @returns {number} 
-     */
-    _five(next) {
-        if (next === 'I') {
-            return 3;
-        }
+        if (value === next) return result
 
-        return 5
-    }
+        if (next === 'I') result -= ROMAN.I * 2
+        if (next === 'X') result -= ROMAN.X * 2
+        if (next === 'C') result -= ROMAN.C * 2
 
-    /**
-     * @param {String} next
-     * @returns {number} 
-     */
-    _tens(next) {
-        if (next === 'I') {
-            return 8;
-        }
-
-        return 10
-    }
-
-    /**
-     * @param {String} value
-     * @returns {String}
-     */
-    _revert(value) {
-        let result = ''
-
-        for (let i=value.length-1; i >= 0; i--) {
-            result += value[i]
-        }
-
-        return result.toUpperCase()
+        return result
     }
 }
