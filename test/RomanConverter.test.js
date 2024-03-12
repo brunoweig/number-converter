@@ -18,7 +18,19 @@ describe('First', () => {
         ['CM', 900],
     ]
 
+    const invalid_cases = [
+        ['ASD'],
+        ['IIII'],
+        ['VV'],
+        ['CCCC'],
+        ['DD'],
+    ]
+
     it.each(valid_cases)('valid %s = %d', (input, expected) => {
         expect(converter.get(input)).toBe(expected)
+    })
+
+    it.each(invalid_cases)('throw error on %s', input => {
+        expect(() => converter.get(input)).toThrow(SyntaxError)
     })
 });

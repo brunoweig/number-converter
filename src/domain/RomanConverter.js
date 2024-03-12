@@ -13,6 +13,8 @@ export class RomanConverter {
      * @param {String} value 
      */
     get(value) {
+        this.validate(value)
+
         let result = 0
         const formattedValue = value.toUpperCase()
 
@@ -24,6 +26,28 @@ export class RomanConverter {
         }
 
         return result
+    }
+
+    /**
+     * @param {String} value 
+     */
+    validate(value) {
+        /**
+         * @type {RegExp[]}
+         */
+        const tests = [
+            /[^IVXLCDM]/,
+            /I{4,}/,
+            /V{2,}/,
+            /C{4,}/,
+            /D{2,}/,
+        ]
+
+        tests.forEach(function (regex) {
+            if (regex.test(value)) {
+                throw new SyntaxError('Número incorreto')
+            }
+        })
     }
 
     _calculate(value, next) {
