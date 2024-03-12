@@ -40,6 +40,8 @@ export class RomanConverter {
             /[^IVXLCDM]/,
             /I{4,}/,
             /V{2,}/,
+            /X{4,}/,
+            /L{2,}/,
             /C{4,}/,
             /D{2,}/,
         ]
@@ -57,7 +59,7 @@ export class RomanConverter {
         if (value === next) return result
 
         if (next === 'I') result -= ROMAN.I * 2
-        if (next === 'X') result -= ROMAN.X * 2
+        if (next === 'X' && value !== 'V') result -= ROMAN.X * 2
         if (next === 'C') result -= ROMAN.C * 2
 
         return result

@@ -22,6 +22,8 @@ describe('First', () => {
         ['ASD'],
         ['IIII'],
         ['VV'],
+        ['XXXX'],
+        ['LL'],
         ['CCCC'],
         ['DD'],
     ]
