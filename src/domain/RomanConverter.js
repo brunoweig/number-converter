@@ -13,10 +13,11 @@ export class RomanConverter {
      * @param {String} value 
      */
     get(value) {
-        this.validate(value)
+        const formattedValue = value.toUpperCase()
+
+        this.validate(formattedValue)
 
         let result = 0
-        const formattedValue = value.toUpperCase()
 
         for (let i=formattedValue.length-1; i >= 0; i--) {
             const current = formattedValue[i]
